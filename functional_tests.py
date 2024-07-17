@@ -44,14 +44,18 @@ class NewVisitorTest(unittest.TestCase):
         time.sleep(1)
 
         table = self.browser.find_element(By.ID, 'id_list_table')
-        rows = table.find_element(By.TAG_NAME, 'tr')
-        self.assertTrue(
-            any(row.text == '1: Buy peacock feathers' for row in rows),
-            "New to-do item did not appear in table"
-        )
+        rows = table.find_elements(By.TAG_NAME, 'tr')
+        self.assertIn('1: Buy peacock feathers', [row.text for row in rows])
         #Ainda continua havendo uma caixa de texto convidando-a a acrescentar outro
         #item. Ela insere "Use peacock feathers to make a fly" (Usar penas de pavão
         #para fazer um fly - Edith é bem metódica)
+        inputbox = self.browser.find_element(By.ID, 'id_new_item') 
+        inputbox.send_keys('Use peacock feathers to make a fly')
+        inputbox.send_keys(Keys.ENTER)
+        time.sleep(1)
+        table = self.browser.find_element(By.ID, 'id_list_table')
+        rows = table.find_elements(By.TAG_NAME, 'tr')
+        self.assertIn('1: Use peacock feathers to make a fly', [row.text for row in rows])
 
         #A pagina é atualizada novamente e agora mostra os dois itens em sua lista
 
