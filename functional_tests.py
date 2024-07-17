@@ -39,7 +39,7 @@ class NewVisitorTest(unittest.TestCase):
 
         #Ela digita "Buy peacock feathers" (comprar penas de pavão) em uma caixa
         #de texto (o hobby de Edith é fazer iscas para pesca com fly) 
-        inputbox.send_keys('1: Buy peacock feathers')
+        inputbox.send_keys('Buy peacock feathers')
 
 
         #Quando ela tecla enter, a página é atualizada, e agora a página lista
@@ -53,7 +53,7 @@ class NewVisitorTest(unittest.TestCase):
         #item. Ela insere "Use peacock feathers to make a fly" (Usar penas de pavão
         #para fazer um fly - Edith é bem metódica)
         inputbox = self.browser.find_element(By.ID, 'id_new_item') 
-        inputbox.send_keys('2: Use peacock feathers to make a fly')
+        inputbox.send_keys('Use peacock feathers to make a fly')
         inputbox.send_keys(Keys.ENTER)
         time.sleep(1)
 
