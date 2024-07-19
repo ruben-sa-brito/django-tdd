@@ -8,12 +8,12 @@
     <link rel="stylesheet" href="/static/base.css">
 </head>
 <body>
-    <div class="container col-6">
-        <div class="custom-height">
-            <div class="row">
-                <div class="text-center row justify-content-center">
+    <div class="container">
+        <div class="row col-6 mx-auto">
+            <div class="custom-height">
+                <div class="text-center">
                     <h1 class="header-text">{% block header_text %}{% endblock %}</h1>
-                    <form class="col-6" method="POST" action="{% block form_action %}{% endblock %}">
+                    <form class="col-6 mx-auto" method="POST" action="{% block form_action %}{% endblock %}">
                         <input class="form-control" name="item_text" id="id_new_item" placeholder="Enter a to-do item" />
                         {% csrf_token %}
                     </form>
@@ -21,11 +21,9 @@
             </div>
         </div>
 
-        <div class="row justify-content-center">
-            <div class="col-6">
-                {% block table %}
-                {% endblock %}
-            </div>
+        <div class="row col-6 mx-auto">
+            {% block table %}
+            {% endblock %}
         </div>
     </div>
 </body>
