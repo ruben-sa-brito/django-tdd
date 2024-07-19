@@ -1,0 +1,12 @@
+#id_new_item {
+    margin-top: 2ex;
+}
+
+.custom-height {
+    height: 200px; 
+    background-color: lightgray;
+}
+
+.header-text {
+    margin-top: 50px; 
+}
