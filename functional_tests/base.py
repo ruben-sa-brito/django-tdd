@@ -3,12 +3,13 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 from selenium.common.exceptions import WebDriverException
+from unittest import skip
 import time
 import os
 
 MAX_WAIT = 10
 
-class NewVisitorTest(StaticLiveServerTestCase):
+class FunctionalTest(StaticLiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
@@ -32,6 +33,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
                     raise e
                 time.sleep(0.5)
 
+class NewVisitorTest(FunctionalTest):
     def test_can_start_a_list_and_retrive_it_later(self):
         #Edith ouviu falar de uma nova aplicação online interessante para
         #lista de tarefas. Ela decide verificar sua homepage
@@ -129,7 +131,7 @@ class NewVisitorTest(StaticLiveServerTestCase):
 
 
         # Satisfeitos, ambos voltam a dormir
-
+class LayoutAndStylingTest(FunctionalTest):
     def test_layout_and_styling(self):
         # Edith acessa a página inicial
         self.browser.get(self.live_server_url)
@@ -154,5 +156,25 @@ class NewVisitorTest(StaticLiveServerTestCase):
             512,
             delta=10
         )
+class ItemValidationTest(FunctionalTest):
+    
+    @skip
+    def test_cannot_add_empty_list_items(self):
+        # Edith acessa a página inicial e aceidentalmente tenta submeter
+        # um item vazio na lista. Ela tecla enter na caixa de entrada vazia
+
+        # A página inicial é atualizada e há uma mensagem de erro informando 
+        # que itens da lista não podem estar em branco
+
+        # Ela tenta novamente com um texto para o item, e isso agora funciona
+
+        # De forma perversa, ela agora decide submeter um segundo item em
+        # branco na lista
+
+        # Ela recebe um aviso semelhante na página na lista
+
+        # E ela pode corrigir isso preenchendo o item com um texto
+
+        self.fail('write me!')
 
 
